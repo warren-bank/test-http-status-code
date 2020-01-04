@@ -21,6 +21,11 @@ __params:__
 __dependencies:__
 
 * `curl` needs to be in `PATH`
+  - tested with:
+    ```text
+      curl 7.58.0 (i686-pc-mingw32) libcurl/7.58.0 GnuTLS/3.4.17 zlib/1.2.11 c-ares/1.13.0 libidn2/2.0.4 libpsl/0.18.0 (+libidn2/2.0.4) libssh2/1.8.0 nghttp2/1.27.0 librtmp/2.3
+      Release-Date: 2018-01-24
+    ```
 
 __custom configuration:__
 

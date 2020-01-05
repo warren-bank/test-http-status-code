@@ -9,16 +9,21 @@ if [%2]==[] (
   set output_file="%~2"
 )
 
-for /f "usebackq tokens=* delims=" %%u in (%input_file%) do call :process_url "%%u"
-
+for /l %%n in (1,1,9) do shift
+call :process_file %%%%0 %%%%1 %%%%2 %%%%3 %%%%4 %%%%5 %%%%6 %%%%7 %%%%8 %%%%9
 goto :done
+
+:process_file
+  shift
+  for /f "usebackq tokens=* delims=" %%u in (%input_file%) do call :process_url "%%u"
+  goto :eof
 
 :process_url
   set url=%1
   set proto=!url:~1,4!
   set proto=!proto:"=!
   if "!proto!"=="http" (
-    for /f "usebackq tokens=* delims=" %%c in (`curl -X GET %curl_opts% -sk -w "%%{http_code}" -H "Range: bytes=0-1" -o NUL !url!`) do call :process_code "%%c" !url!
+    for /f "usebackq tokens=* delims=" %%c in (`curl -X GET %curl_opts% -sk -w "%%{http_code}" -H "Range: bytes=0-1" -o NUL !url!`) do call :process_code "%%c" !url:%%=%%%%!
   )
   goto :eof
 

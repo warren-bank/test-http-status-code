@@ -18,7 +18,7 @@ goto :done
   set proto=!url:~1,4!
   set proto=!proto:"=!
   if "!proto!"=="http" (
-    for /f "usebackq tokens=* delims=" %%c in (`curl %curl_opts% -sk -w "%%{http_code}" -o NUL !url!`) do call :process_code "%%c" !url!
+    for /f "usebackq tokens=* delims=" %%c in (`curl -X GET %curl_opts% -sk -w "%%{http_code}" -H "Range: bytes=0-1" -o NUL !url!`) do call :process_code "%%c" !url!
   )
   goto :eof
 

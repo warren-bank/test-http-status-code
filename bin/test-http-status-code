@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+  echo 'Input file path is not defined'
+  exit 1
+else
+  input_file="$1"
+fi
+
+if [ ! -e "$input_file" ]; then
+  echo 'Input file path does not exist'
+  exit 2
+fi
+
+if [ -z "$2" ]; then
+  output_file="$1.result"
+else
+  output_file="$2"
+fi
+
+if [ -e "$output_file" ]; then
+  rm -f "$output_file"
+fi
+
+if [ -n "$declare_curl_opts" ]; then
+  [[ "$declare_curl_opts" =~ ^declare ]] && eval "$declare_curl_opts"
+fi
+if [ "${#curl_opts[@]}" -eq 0 ]; then
+  curl_opts=()
+fi
+
+process_file() {
+  while IFS=$'\n' read -r url; do
+    url=${url%$'\r'}
+    process_url "$url"
+  done < "$input_file"
+}
+
+process_url() {
+  url="$1"
+  proto=${url:0:4}
+  if [ "$proto" == "http" ]; then
+    code=$(curl -X GET "${curl_opts[@]}" -sk -w '%{http_code}' -H 'Range: bytes=0-1' -o '/dev/null' "$url")
+    process_code "$code" "$url"
+  fi
+}
+
+process_code() {
+  code="$1"
+  url="$2"
+  if [ "$code" -ge "200" -a "$code" -lt "299" ]; then
+    echo "$url" >> "$output_file"
+  fi
+}
+
+process_file

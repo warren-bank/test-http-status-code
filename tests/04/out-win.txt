@@ -1,0 +1,3 @@
+http://ftp.utexas.edu/ubuntu-iso/18.04.3/ubuntu-18.04.3-desktop-amd64.iso
+http://ftp.utexas.edu/ubuntu-iso/trusty/ubuntu-14.04.6-desktop-amd64.iso
+http://ftp.utexas.edu/ubuntu-iso/precise/ubuntu-12.04.5-desktop-amd64.iso

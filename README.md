@@ -1,6 +1,11 @@
 ### [test-http-status-code](https://github.com/warren-bank/test-http-status-code)
 
-Windows 'cmd' shell script to process a list of URLs and produce a filtered list that only contains the URLs that return an HTTP status code in the range 200-299.
+Shell script to process a list of URLs and produce a filtered list that only contains the URLs that return an HTTP status code in the range 200-299.
+
+__shells:__
+
+* Windows `cmd`
+* Bash
 
 #### Usage:
 

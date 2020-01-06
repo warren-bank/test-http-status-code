@@ -1,0 +1,11 @@
+https://docs.postman-echo.com/?version=latest
+https://postman-echo.com/status/200
+https://postman-echo.com/status/201
+https://postman-echo.com/status/202
+https://postman-echo.com/status/203
+https://postman-echo.com/status/204
+https://postman-echo.com/status/205
+https://postman-echo.com/status/206
+https://postman-echo.com/status/207
+https://postman-echo.com/status/208
+https://postman-echo.com/status/226

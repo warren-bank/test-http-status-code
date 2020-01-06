@@ -1,12 +1,26 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set input_file="%~1"
+if [%1]==[] (
+  echo Input file path is not defined
+  exit /b 1
+) else (
+  set input_file="%~1"
+)
+
+if not exist %input_file% (
+  echo Input file path does not exist
+  exit /b 2
+)
 
 if [%2]==[] (
   set output_file="%~1.result"
 ) else (
   set output_file="%~2"
+)
+
+if exist %output_file% (
+  del /F /Q %output_file%
 )
 
 for /l %%n in (1,1,9) do shift

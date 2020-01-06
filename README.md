@@ -36,7 +36,16 @@ __custom configuration:__
 
 * environment variable: `curl_opts`
   - ex:
-    * to follow 3xx redirects:<br>`set curl_opts=-L`
+    * to follow 3xx redirects
+      - Windows `cmd`:
+        ```bash
+          set curl_opts=-L
+        ```
+      - Bash:
+        ```bash
+          curl_opts=(-L)
+          [[ $curl_opts ]] && export declare_curl_opts=$(declare -p curl_opts)
+        ```
 
 #### Legal:
 

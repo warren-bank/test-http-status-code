@@ -45,7 +45,7 @@ goto :done
   set /a "code=%~1"
   set url=%2
   set url=!url:"=!
-  if !code! GEQ 200 if !code! LSS 300 (
+  if !code! GEQ 200 if !code! LEQ 299 (
     echo !url!>>!output_file!
   )
   goto :eof

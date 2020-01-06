@@ -48,7 +48,7 @@ process_url() {
 process_code() {
   code="$1"
   url="$2"
-  if [ "$code" -ge "200" -a "$code" -lt "299" ]; then
+  if [ "$code" -ge "200" -a "$code" -le "299" ]; then
     echo "$url" >> "$output_file"
   fi
 }
